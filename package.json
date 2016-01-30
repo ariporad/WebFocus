@@ -7,8 +7,9 @@
   "scripts": {
     "lint": "eslint .",
     "clean": "rimraf dist",
-    "build": "npm run clean && cpy *.html dist && webpack",
-    "dev": "npm run lint && npm run build && webpack-dev-server --content-base dist --progress --colors --hot --inline",
+    "build": "npm run clean && cpy *.html dist && NODE_ENV=production webpack",
+    "predev": "npm run lint && npm run build",
+    "dev": "webpack-dev-server --content-base dist --progress --colors --hot --inline",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -45,6 +46,7 @@
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-redux": "^4.1.1",
+    "react-router": "^2.0.0-rc5",
     "redux": "^3.1.2"
   },
   "config": {

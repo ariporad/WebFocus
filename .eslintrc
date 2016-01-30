@@ -3,5 +3,8 @@
   "parser": "babel-eslint",
   "globals": {
     "__DEV__": 0
+  },
+  "rules": {
+    "react/jsx-no-bind": 0
   }
 }

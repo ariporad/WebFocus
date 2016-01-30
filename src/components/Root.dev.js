@@ -2,13 +2,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import storeShape from 'react-redux/lib/utils/storeShape';
-import App from './App'; // TODO: Make this children instead of hard coded to support router.
 import DevTools from './DevTools';
 
-const Root = ({ store }) => (
+const Root = ({ store, children }) => (
   <Provider store={store}>
      <div>
-        <App />
+       {children}
         <DevTools />
      </div>
   </Provider>
@@ -16,6 +15,11 @@ const Root = ({ store }) => (
 
 Root.propTypes = {
   store: storeShape.isRequired,
+  children: React.PropTypes.node,
+};
+
+Root.defaultProps = {
+  children: null,
 };
 
 export default Root;
