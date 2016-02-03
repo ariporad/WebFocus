@@ -15,6 +15,10 @@ const WrappedRoot = (props) => (
   />
 );
 
+WrappedRoot.propTypes = {
+  children: React.PropTypes.node,
+};
+
 ReactDOM.render((
   <Router history={hashHistory} >
     <Route path="/" component={WrappedRoot}>
