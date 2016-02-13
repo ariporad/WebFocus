@@ -8,8 +8,11 @@
     "lint": "eslint .",
     "clean": "rimraf dist",
     "build": "npm run clean && cpy *.html dist && NODE_ENV=production webpack",
-    "predev": "npm run lint && npm run build",
-    "dev": "webpack-dev-server --content-base dist --progress --colors --hot --inline",
+    "webpack:dev": "webpack-dev-server --content-base dist --colors --hot --inline --quiet",
+    "watch": "NODE_ENV=development npm run -s _watch # Hide npm's output",
+    "_watch:karma": "karma start --no-single-run --log-level error",
+    "pre_watch": "npm run lint && npm run build",
+    "_watch": "parallelshell \"nodemon -q --no-colors -x npm -s run lint\" \"npm run _watch:karma\" \"npm run -s webpack:dev\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,6 +33,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.0.1",
     "babel-preset-stage-0": "^6.3.13",
+    "clear": "0.0.1",
     "cpy-cli": "^1.0.0",
     "cz-conventional-changelog": "^1.1.5",
     "enzyme": "^1.5.0",
@@ -43,12 +47,14 @@
     "karma-mocha": "^0.2.1",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.4.5",
+    "parallelshell": "2.0.0",
     "react-addons-test-utils": "^0.14.7",
     "redux-devtools": "^3.0.2",
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.2",
     "rimraf": "^2.5.1",
     "webpack": "^1.12.12",
+    "nodemon": "1.8.1",
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
