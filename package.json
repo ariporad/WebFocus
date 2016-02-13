@@ -13,7 +13,7 @@
     "_watch:karma": "karma start --no-single-run --log-level error",
     "pre_watch": "npm run lint && npm run build",
     "_watch": "parallelshell \"nodemon -q --no-colors -x npm -s run lint\" \"npm run _watch:karma\" \"npm run -s webpack:dev\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start --no-auto-watch --single-run"
   },
   "repository": {
     "type": "git",
